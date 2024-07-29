@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIT Attendance Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loginSection" class="container">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div id="portalSection" class="container" style="display: none;">
+        <div class="navbar">
+            <div class="navbar-brand">
+                <h1>Student Attendance Portal</h1>
+            </div>
+            <div class="navbar-links">
+                <p>Academic Year: <span id="academicYear">2024</span></p>
+            </div>
+        </div>
+
+        <div id="formSection">
+            <h2>Mark Attendance</h2>
+            <button id="addStudentButton" onclick="showAddStudentForm()">Add Student</button>
+            <button id="addClassButton" onclick="showAddClassForm()">Add Class</button>
+
+            <label for="classSelector">Class:</label>
+            <select id="classSelector" required onchange="showStudentsList()"></select>
+
+            <label for="searchInput">Search:</label>
+            <input type="text" id="searchInput" placeholder="Search by class or student name" onkeyup="searchData()">
+
+            <ul id="studentsList"></ul>
+
+            <div id="summarySection">
+                <h3>Summary</h3>
+                <p>Total Students: <span id="totalStudents">0</span></p>
+                <p>Total Present: <span id="totalPresent">0</span></p>
+                <p>Total Absent: <span id="totalAbsent">0</span></p>
+                <p>Total Leave: <span id="totalLeave">0</span></p>
+            </div>
+
+            <button onclick="submitAttendance()">Submit Attendance</button>
+
+            <div id="resultSection" style="display: none;">
+                <h3>Attendance Result</h3>
+                <p>Date: <span id="attendanceDate"></span></p>
+                <p>Time: <span id="attendanceTime"></span></p>
+                <p>Class: <span id="attendanceClass"></span></p>
+                <p>Total Students: <span id="attendanceTotalStudents"></span></p>
+                <p>Present: <span id="attendancePresent"></span></p>
+                <p>Absent: <span id="attendanceAbsent"></span></p>
+                <p>Leave: <span id="attendanceLeave"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="addStudentPopup" class="popup">
+        <h2>Add Student</h2>
+        <label for="newStudentName">Student Name:</label>
+        <input type="text" id="newStudentName" required>
+        <label for="newStudentRoll">Roll Number:</label>
+        <input type="text" id="newStudentRoll" required>
+        <button onclick="addStudent()">Submit</button>
+        <button onclick="closePopup()">Cancel</button>
+    </div>
+
+    <div id="addClassPopup" class="popup">
+        <h2>Add Class</h2>
+        <label for="newClassName">Class Name:</label>
+        <input type="text" id="newClassName" required>
+        <button onclick="addClass()">Submit</button>
+        <button onclick="closePopup()">Cancel</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
